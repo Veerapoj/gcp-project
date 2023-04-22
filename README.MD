@@ -1,1 +1,4 @@
-### test gcp project update protect update test2 ###
+### test gcp project flask application ###
+- This application is written with python
+- It shell be deployed on GKE
+- update
