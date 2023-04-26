@@ -22,3 +22,23 @@ spec:
         env:
         - name: PORT
           value: "5000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gcp
+    app.kubernetes.io/managed-by: gcp-cloud-build-deploy
+  name: gcp-service
+  namespace: gcpspace
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: gcp
+  type: LoadBalancer
+status:
+  loadBalancer: {}
