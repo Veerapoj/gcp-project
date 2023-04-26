@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gcp-iamge
+  name: gcp-dev
   labels:
     app: gcp
 spec:
@@ -15,8 +15,8 @@ spec:
         app: gcp
     spec:
       containers:
-      - name: my-iamge
-        image: gcr.io/secret-fountain-384608/my-docker-repo/gcp-image:latest
+      - name: gcp-dev
+        image: gcr.io/secret-fountain-384608/my-docker-repo/gcp-dev:latest
         ports:
         - containerPort: 5000
         env:
@@ -31,7 +31,7 @@ metadata:
     app: gcp
     app.kubernetes.io/managed-by: gcp-cloud-build-deploy
   name: gcp-service
-  namespace: gcpspace
+  namespace: gcpdev
 spec:
   ports:
   - port: 80
