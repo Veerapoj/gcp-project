@@ -1,15 +1,15 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/${PROJECT_ID}/my-docker-repo/gcp-image', '.']
+  args: ['build', '-t', 'gcr.io/${PROJECT_ID}/my-docker-repo/gcp-dev', '.']
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/${PROJECT_ID}/my-docker-repo/gcp-image']
+  args: ['push', 'gcr.io/${PROJECT_ID}/my-docker-repo/gcp-dev']
 
 - name: 'gcr.io/cloud-builders/gke-deploy'
   args:
   - run
   - --filename=gke.yaml
-  - --image=gcr.io/${PROJECT_ID}/my-docker-repo/gcp-image
+  - --image=gcr.io/${PROJECT_ID}/my-docker-repo/gcp-dev
   - --location=asia-southeast1-b
   - --cluster=gcp-gke-project
-  - --namespace=gcpspace
+  - --namespace=gcpdev
