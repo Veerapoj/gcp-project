@@ -5,7 +5,7 @@ metadata:
   labels:
     app: gcp
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: gcp
