@@ -1,11 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gcp-dev
+  name: gcp-prd
+  namespace: gcpspace
   labels:
     app: gcp
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: gcp
@@ -15,8 +16,8 @@ spec:
         app: gcp
     spec:
       containers:
-      - name: gcp-dev
-        image: gcr.io/secret-fountain-384608/my-docker-repo/gcp-dev:latest
+      - name: gcp-prd
+        image: gcr.io/secret-fountain-384608/my-docker-repo/gcp-prd:latest
         ports:
         - containerPort: 5000
         env:
@@ -31,7 +32,7 @@ metadata:
     app: gcp
     app.kubernetes.io/managed-by: gcp-cloud-build-deploy
   name: gcp-service
-  namespace: gcpdev
+  namespace: gcpspace
 spec:
   ports:
   - port: 80
